@@ -2,6 +2,14 @@
   "name": "js-dev-env",
   "version": "1.0.0",
   "description": "Javascript Development Environment",
+  "scripts": {
+    "prestart": "babel-node buildScripts/startMessage.js",
+    "start": "npm-run-all --parallel security-check open:src",
+    "open:src": "babel-node buildScripts/srcServer.js",
+    "security-check": "nsp check",
+    "localtunnel": "lt --port 3000 --subdomain jsdev",
+    "share": "npm-run-all --parallel open:src localtunnel"
+  },
   "main": "index.js",
   "repository": "https://github.com/barryblando/js-dev-env.git",
   "author": "Retr0_0x315 <barryblando@gmail.com>",
