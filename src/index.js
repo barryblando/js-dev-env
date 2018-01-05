@@ -1,6 +1,11 @@
 import './styles/index.scss';
 import { getUsers, deleteUser } from './api/userApi';
 
+import Raven from 'raven-js';
+import { sentry_url } from '../buildScripts/config';
+
+Raven.config(sentry_url).install();
+
 getUsers().then(result => {
   let usersBody = '';
   result.forEach(user => {

@@ -2,7 +2,9 @@ import webpack from 'webpack';
 import path from 'path';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-
+import WebpackMd5Hash from 'webpack-md5-hash';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
 export default {
   devtool: 'source-map',
@@ -14,7 +16,7 @@ export default {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: '[name].js'
+    filename: '[name].[chunkhash].js'
   },
   module: {
     rules: [
@@ -31,7 +33,12 @@ export default {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          // resolve-url-loader may be chained before sass-loader if necessary
+          use: ['css-loader?sourceMap', 'sass-loader?sourceMap'],
+          publicPath: './dist',
+        }),
       }
     ]
   },
@@ -40,6 +47,20 @@ export default {
     modules: ['node_modules']
   },
   plugins: [
+    // Generate and external css file with a has in the filename
+    new ExtractTextPlugin('[name].[contenthash].css'),
+
+    // Optimize css file for Duplication
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.optimize\.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: { discardComments: { removeAll: true } },
+      canPrint: true
+    }),
+
+    // Hash the files using MD5 so that their names change when the content changes.
+    new WebpackMd5Hash(),
+
     // Use CommonsChunkPlugin to create a separate bundle
     // of vendor libraries so that they're cached separately.
     new webpack.optimize.CommonsChunkPlugin({
@@ -61,11 +82,11 @@ export default {
         minifyCSS: true,
         minifyURLs: true
       },
-      inject: true
+      inject: true,
+      // Properties you define here are available in index.html
+      // using htmlWebpackPlugin.options.varName
+      SentryKey: '29fdcccc13fc41a8a78b53ac8f4e4c8b'
     }),
-
-    // Eliminate duplicate packages when generating bundle
-    new webpack.optimize.DedupePlugin(),
 
     // Minify JS
     new UglifyJsPlugin({

@@ -25,3 +25,7 @@
 -Travis CI - Linux Version
 
 -Appveyor -  Windows Version
+
+## Error Tracker
+
+-Sentry
