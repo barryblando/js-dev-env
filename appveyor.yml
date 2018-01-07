@@ -18,6 +18,7 @@ test_script:
   - npm --version
   # run tests
   - yarn test
-
+  - yarn run coverage
+  - yarn run coveralls
 # Don't actually build.
 build: off
