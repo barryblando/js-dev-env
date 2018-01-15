@@ -43,6 +43,31 @@
 1. **Install Node Packages.** - `yarn install`
 1. **Run the app.** - `yarn start -s` This will run the automated build process, start up a webserver, and open the application in your default browser. When doing development with this kit, this command will continue watching files all your files. Every time you hit save the code is rebuilt, linting runs, and tests run automatically. Note: The -s flag is optional. It enables silent mode which suppresses unnecessary messages during the build.
 
+## Scripts
+
+| **Scripts**                 | **Use**                                                                                                   |
+| --------------------------- | --------------------------------------------------------------------------------------------------------- |
+| prestart                    | Starting Message                                                                                          |
+| start                       | Will run all development scripts in parallel mode                                                         |
+| open:src                    | Runs Source Server                                                                                        |
+| lint                        | Lints webpack.config.*, src and buildScripts folder                                                       |
+| lint:watch                  | Watches Linted Files and Folders                                                                          |
+| security-check              | Checks packages for vulnerabilities                                                                       |
+| localtunnel                 | Static hosting w/o Firewall                                                                               |
+| coverage                    | Code coverage using istanbul                                                                              |
+| coveralls                   | Test Coverage History & Statistics                                                                        |
+| share                       | Shares srcServer using localtunnel                                                                        |
+| test                        | Tests all *.test.js files using Mocha                                                                     |
+| test:watch                  | Watches all tests files                                                                                   |
+| generate-mock-data          | Generate Schema using JSON Schema Faker                                                                   |
+| prestart-mockapi            | Runs generate-mock-data first before starting JSON Server                                                 |
+| start-mockapi               | Runs JSON Server for Development Environment                                                              |
+| clean-dist                  | Cleans dist folder for Production Build                                                                   |
+| prebuild                    | Runs Cleans dist, Watch Test Files and Lint Files First                                                   |
+| build                       | Production Build                                                                                          |
+| postbuild                   | Runs Dist Server                                                                                          |
+| deploy                      | Deploy Dist using Surge and API to Heroku for Test                                                        |
+
 ## Issues
 
 **Having Issues?** Try these things first:
@@ -67,6 +92,7 @@
 | chai                        | Tool to verify that things are correct. TDD Assertion Lib.                                                |
 | chalk                       | Terminal string styling done right                                                                        |
 | cheerio                     | Supports querying DOM with jQuery like syntax - Useful in testing and build process for HTML manipulation |
+| compression                 | Compress Production Bundle JS file as its finest                                                          |
 | cross-env                   | Cross-environment friendly way to handle environment variables                                            |
 | css-loader                  | Add CSS support to Webpack                                                                                |
 | eslint                      | Lints JavaScript                                                                                          |
@@ -86,6 +112,7 @@
 | css-loader                  | Load CSS                                                                                                  |
 | sass -loader                | Loads a SASS/SCSS file and compiles it to CSS                                                             |
 | node-sass                   | Sass Compiler                                                                                             |
+| uglifyJS                    | JS Parser, Compressor, Minifier                                                                           |
 | url-loader                  | Add url loading support to Webpack                                                                        |
 | webpack                     | Bundler with plugin system and integrated development server                                              |
 | webpack-dev-middleware      | Adds middleware support to webpack                                                                        |

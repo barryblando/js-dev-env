@@ -11,7 +11,7 @@ import getBaseUrl from './baseUrl';
 const baseUrl = getBaseUrl();
 
 export function getUsers(){
-  return get('users'); // /users
+  return get('users'); // get baseUrl/users
 }
 
 export function deleteUser(id) {
@@ -19,6 +19,7 @@ export function deleteUser(id) {
 }
 
 function get(url) {
+  // demo api https://floating-basin-12302.herokuapp.com/users
   return fetch(baseUrl + url).then(onSuccess, onError);
 }
 
@@ -32,6 +33,7 @@ function del(url) {
 }
 
 function onSuccess(response) {
+  // return response as json or response will return a ReadableStream
   return response.json();
 }
 
