@@ -8,35 +8,41 @@
 
 import getBaseUrl from './baseUrl';
 
-const baseUrl = getBaseUrl();
+class Users {
+  constructor() {
+    this.baseUrl = getBaseUrl();
+  }
 
-export function getUsers(){
-  return get('users'); // get baseUrl/users
+  getUsers() {
+    return this.get('users'); // get baseUrl/users
+  }
+
+  deleteUser(id) {
+    return this.del(`user/${id}`);
+  }
+
+  get(url) {
+    // demo api https://floating-basin-12302.herokuapp.com/users
+    return fetch(this.baseUrl + url).then(this.onSuccess, this.onError);
+  }
+
+  // Can't call func delete since reserved word.
+  del(url) {
+    const request = new Request(this.baseUrl + url, {
+      method: 'DELETE'
+    });
+
+    return fetch(request).then(this.onSuccess, this.onError);
+  }
+
+  onSuccess(response) {
+    // return response as json or response will return a ReadableStream
+    return response.json();
+  }
+
+  onError(error) {
+    console.log(error); // eslint-disable-line no-console
+  }
 }
 
-export function deleteUser(id) {
-  return del(`users/${id}`);
-}
-
-function get(url) {
-  // demo api https://floating-basin-12302.herokuapp.com/users
-  return fetch(baseUrl + url).then(onSuccess, onError);
-}
-
-// Can't call func delete since reserved word.
-function del(url) {
-  const request = new Request(baseUrl + url, {
-    method: 'DELETE'
-  });
-
-  return fetch(request).then(onSuccess, onError);
-}
-
-function onSuccess(response) {
-  // return response as json or response will return a ReadableStream
-  return response.json();
-}
-
-function onError(error) {
-  console.log(error); // eslint-disable-line no-console
-}
+export default Users;

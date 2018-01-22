@@ -1,12 +1,15 @@
 import './styles/index.scss';
-import { getUsers, deleteUser } from './api/userApi';
+// import { getUsers, deleteUser } from './api/userApi';
+import Users from './api/userApi'
 
 import Raven from 'raven-js';
 import { sentry_url } from '../buildScripts/config';
 
 Raven.config(sentry_url).install();
 
-getUsers().then(result => {
+const users = new Users();
+
+users.getUsers().then(result => {
   let usersBody = '';
   result.forEach(user => {
     usersBody += `<tr>
@@ -28,7 +31,7 @@ getUsers().then(result => {
     link.onclick = function(event) {
       const element = event.target;
       event.preventDefault();
-      deleteUser(element.attributes['data-id'].value);
+      users.deleteUser(element.attributes['data-id'].value);
       const row = element.parentNode.parentNode;
       row.parentNode.removeChild(row);
     };
