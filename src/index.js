@@ -5,7 +5,7 @@ import Users from './api/userApi'
 import Raven from 'raven-js';
 import { sentry_url } from '../buildScripts/config';
 
-Raven.config(sentry_url).install();
+Raven.config(sentry_url).install().addPlugin(require('raven-js/plugins/console'));
 
 const users = new Users();
 
