@@ -33,6 +33,9 @@
 <img src="https://snyk.io/test/github/barryblando/js-dev-env/badge.svg">
 </a>
 
+</br>
+<a href='https://dependencyci.com/github/barryblando/js-dev-env'><img src='https://dependencyci.com/github/barryblando/js-dev-env/badge' alt='Dependency Status'></a>
+
 </p>
 
 ## Get Started
