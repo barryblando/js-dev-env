@@ -9,6 +9,7 @@ import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 export default {
   devtool: 'source-map',
   entry: {
+    //  bundle split
     vendor: path.resolve(__dirname, 'src/vendor.js'),
     main: path.resolve(__dirname, 'src/index.js'),
   },
@@ -47,7 +48,7 @@ export default {
     modules: ['node_modules']
   },
   plugins: [
-    // Generate and external css file with a has in the filename
+    // Generate an external css file with a hash in the filename
     new ExtractTextPlugin('[name].[contenthash].css'),
 
     // Optimize css file for Duplication
