@@ -23,7 +23,12 @@ class Users {
 
   get(url) {
     // demo api https://floating-basin-12302.herokuapp.com/users
-    return fetch(this.baseUrl + url).then(this.onSuccess, this.onError);
+    return fetch(this.baseUrl + url, {
+      headers : {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+       }
+    }).then(this.onSuccess, this.onError);
   }
 
   // Can't call func delete since reserved word.
@@ -32,7 +37,7 @@ class Users {
       method: 'DELETE'
     });
 
-    return fetch(request).then(this.onSuccess, this.onError);
+    return fetch(request).then(this.onSuccess, this.onError).then((messages) => console.log(`${messages}`)); // eslint-disable-line no-console
   }
 
   onSuccess(response) {

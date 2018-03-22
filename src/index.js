@@ -3,7 +3,7 @@ import './styles/index.scss';
 import Users from './api/userApi'
 
 import Raven from 'raven-js';
-import { sentry_url } from '../buildScripts/config';
+import { sentry_url } from '../config/raven.config';
 
 Raven.config(sentry_url).install().addPlugin(require('raven-js/plugins/console'));
 
