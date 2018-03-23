@@ -53,7 +53,7 @@
 | prestart                    | Starting Message                                                                                          |
 | start                       | Will run all development scripts in parallel mode                                                         |
 | open:src                    | Runs Source Server                                                                                        |
-| lint                        | Lints webpack.config.*, src and buildScripts folder                                                       |
+| lint                        | Lints config, src ,and buildScripts folder                                                                |
 | lint:watch                  | Watches Linted Files and Folders                                                                          |
 | security-check              | Checks packages for vulnerabilities                                                                       |
 | localtunnel                 | Static hosting w/o Firewall                                                                               |
@@ -95,6 +95,7 @@
 | chai                        | Tool to verify that things are correct. TDD Assertion Lib.                                                |
 | chalk                       | Terminal string styling done right                                                                        |
 | cheerio                     | Supports querying DOM with jQuery like syntax - Useful in testing and build process for HTML manipulation |
+| circular-dependency-plugin  | Detect modules with circular dependencies when bundling with webpack.                                     |
 | compression                 | Compress Production Bundle JS file as its finest                                                          |
 | cross-env                   | Cross-environment friendly way to handle environment variables                                            |
 | css-loader                  | Add CSS support to Webpack                                                                                |
