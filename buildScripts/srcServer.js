@@ -3,7 +3,6 @@ import path from 'path';
 import open from 'open';
 import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from "webpack-hot-middleware";
 import config from '../config/webpack.config.dev';
 
 /* eslint-disable no-console */
@@ -23,8 +22,6 @@ app.use(webpackDevMiddleware(compiler, {
     ignored: /node_modules/
   }
 }));
-
-app.use(webpackHotMiddleware(compiler));
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../src/index.html'));

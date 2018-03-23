@@ -1,10 +1,20 @@
+/**
+ * DEVELOPMENT WEBPACK CONFIGURATION
+ */
+
 import path from 'path';
+import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CircularDependencyPlugin from 'circular-dependency-plugin';
 
 export default {
   mode: 'development',
   devtool: 'inline-source-map',
-  entry: path.resolve(__dirname, '../src/index.js'),
+  entry: [
+    'eventsource-polyfill', // Necessary for hot reloading with IE
+    'webpack-hot-middleware/client?reload=true',
+    path.resolve(__dirname, '../src/index.js')
+  ],
   target: 'web', // or node for node app
   output: {
     path: path.resolve(__dirname, 'src'),
@@ -36,10 +46,15 @@ export default {
     modules: ['node_modules']
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(), // Tell webpack we want hot reloading
     // Create HTML file that includes reference to bundled JS.
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      inject: true
+      inject: true,
+      template: 'src/index.html'
+    }),
+    new CircularDependencyPlugin({
+      exclude: /a\.js|node_modules/, // exclude node_modules
+      failOnError: false // show a warning when there is a circular dependency
     })
   ]
 }

@@ -1,4 +1,6 @@
-import webpack from 'webpack';
+/**
+ * PRODUCTION WEBPACK CONFIGURATION
+ */
 import path from 'path';
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -63,11 +65,12 @@ export default {
     // Hash the files using MD5 so that their names change when the content changes.
     new WebpackMd5Hash(),
 
+    // NOTE: DEPRECATED. Used config.optimization.splitChunks
     // Use CommonsChunkPlugin to create a separate bundle
     // of vendor libraries so that they're cached separately.
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendor'
+    // }),
 
     // Create HTML file that includes reference to bundled JS.
     new HtmlWebpackPlugin({
@@ -94,5 +97,22 @@ export default {
     new UglifyJsPlugin({
       sourceMap: true
     })
-  ]
+  ],
+  optimization: {
+    minimize: false,
+    runtimeChunk: {
+        name: 'vendor'
+    },
+    splitChunks: {
+      cacheGroups: {
+        default: false,
+        commons: {
+          test: /node_modules/,
+          name: "vendor",
+          chunks: "initial",
+          minSize: 1
+        }
+      }
+    }
+  }
 }
