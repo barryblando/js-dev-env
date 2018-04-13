@@ -124,7 +124,7 @@
 
 ## Testing Environment
 
-1. Karma - Test Runner [TBF]
+1. Karma - Test Runner
 
 ## Testing Frameworks
 

@@ -1,14 +1,16 @@
 /**
  * PRODUCTION WEBPACK CONFIGURATION
  */
-import path from 'path';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import WebpackMd5Hash from 'webpack-md5-hash';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
-export default {
+const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackMd5Hash = require('webpack-md5-hash');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+
+module.exports = {
   mode: 'production',
   devtool: 'source-map',
   entry: {

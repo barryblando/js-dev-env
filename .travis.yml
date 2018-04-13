@@ -1,5 +1,5 @@
 language: node_js
 node_js:
   - "9"
-script: yarn run coverage
+script: yarn coverage
 after_success: 'yarn run coveralls'

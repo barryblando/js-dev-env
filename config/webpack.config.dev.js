@@ -2,12 +2,12 @@
  * DEVELOPMENT WEBPACK CONFIGURATION
  */
 
-import path from 'path';
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import CircularDependencyPlugin from 'circular-dependency-plugin';
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 
-export default {
+module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   entry: [
