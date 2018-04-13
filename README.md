@@ -109,6 +109,7 @@
 | file-loader                 | Adds file loading support to Webpack                                                                      |
 | jsdom                       | In-memory DOM for testing                                                                                 |
 | mocha                       | JavaScript testing library                                                                                |
+| nock                        | An HTTP mocking and expectations library for Node.js                                                      |
 | npm-run-all                 | Display results of multiple commands on single command line                                               |
 | open                        | Open app in default browser                                                                               |
 | rimraf                      | Delete files                                                                                              |
