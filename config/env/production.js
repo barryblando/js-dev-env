@@ -2,6 +2,8 @@
 
 const path = require('path');
 const webpackConfig = require('../../config/webpack.config.test');
+const testGlob = 'src/**/*.spec.js';
+const srcGlob = 'src/**/*!(spec|test|stub).js';
 
 module.exports = {
   karma: {
@@ -21,17 +23,22 @@ module.exports = {
     webpack: webpackConfig,
     webpackMiddleWare: { noInfo: true },
     preprocessors: {
-      'src/**/*.spec.js': ['babel', 'webpack', 'coverage'],
-      'src/**/*.js': ['babel', 'webpack', 'coverage'],
+      [testGlob]: ['webpack', 'sourcemap', 'coverage'],
+      [srcGlob]: ['webpack', 'sourcemap', 'coverage']
     },
-    reporters: ['progress', 'coverage'],
+    reporters: ['mocha', 'coverage', 'remap-coverage'],
     coverageReporter: {
       dir: path.join(__dirname, '../../coverage'),
       reporters: [
         { type: 'lcov', dir: 'coverage/', subdir: '.' },
         { type: 'json', dir: 'coverage/', subdir: '.' },
-        { type: 'text-summary' },
+        { type: 'text' }
       ]
+    },
+    remapCoverageReporter: {
+      'text-summary': null,
+      html: './coverage/html',
+      cobertura: './coverage/cobertura.xml'
     },
     autoWatch: false,
     singleRun: true

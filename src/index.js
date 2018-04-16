@@ -1,6 +1,7 @@
 import "./styles/index.scss";
 // import { getUsers, deleteUser } from './api/userApi';
 import Users from "./api/userApi";
+import 'whatwg-fetch'; // Fixed babel runtime ReferenceError:
 
 import Raven from "raven-js";
 import { sentry_url } from "../config/raven.config";
