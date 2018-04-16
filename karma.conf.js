@@ -5,7 +5,7 @@ process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 const appConfig = require('./config/index');
 
-module.exports = function(config) {
+module.exports = config => {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -16,19 +16,21 @@ module.exports = function(config) {
     frameworks: ['mocha', 'chai'],
 
     plugins: [
-      'karma-mocha',
-      'karma-chai',
-      'karma-chrome-launcher',
-      'karma-babel-preprocessor',
-      'babel-preset-env',
-      'karma-coverage',
-      'karma-coveralls',
-      'karma-webpack'
+      require('karma-mocha'),
+      require('karma-chai'),
+      require('karma-chrome-launcher'),
+      require('karma-phantomjs-launcher'),
+      require('karma-babel-preprocessor'),
+      require('babel-preset-env'),
+      require('karma-coverage'),
+      require('karma-coveralls'),
+      require('karma-webpack'),
+      require('karma-sourcemap-loader'),
     ],
 
     // list of files / patterns to load in the browser
     files: [
-      'src/**/*.spec.js'
+      'src/**/*.spec.js',
     ],
 
     // list of files / patterns to exclude
@@ -38,8 +40,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: appConfig.karma.preprocessors,
-    // webpack: appConfig.karma.webpack,
-    // webpackMiddleWare: appConfig.karma.webpackMiddleWare,
+    webpack: appConfig.karma.webpack,
+    webpackMiddleWare: appConfig.karma.webpackMiddleWare,
 
     babelPreprocessor: {
       options: {
@@ -55,7 +57,7 @@ module.exports = function(config) {
     coverageReporter: appConfig.karma.coverageReporter,
 
     // web server port
-    port: 9876,
+    port: 3000,
 
     // enable / disable colors in the output (reporters and logs)
     colors: true,

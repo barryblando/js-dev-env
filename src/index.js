@@ -1,4 +1,4 @@
-// import "./styles/index.scss";
+import "./styles/index.scss";
 // import { getUsers, deleteUser } from './api/userApi';
 import Users from "./api/userApi";
 
@@ -39,4 +39,3 @@ users.getUsers().then(result => {
     };
   });
 });
-

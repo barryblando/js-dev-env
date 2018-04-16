@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-// const webpackConfig = require('../../config/webpack.config.prod');
+const webpackConfig = require('../../config/webpack.config.test');
 
 module.exports = {
   karma: {
@@ -18,11 +18,11 @@ module.exports = {
         ],
       },
     },
-    // webpack: webpackConfig,
-    // webpackMiddleWare: { noInfo: true },
+    webpack: webpackConfig,
+    webpackMiddleWare: { noInfo: true },
     preprocessors: {
-      'src/**/*.js': ['babel', 'coverage'],
-      'src/**/*.spec.js': ['babel', 'coverage'],
+      'src/**/*.spec.js': ['babel', 'webpack', 'coverage'],
+      'src/**/*.js': ['babel', 'webpack', 'coverage'],
     },
     reporters: ['progress', 'coverage'],
     coverageReporter: {
