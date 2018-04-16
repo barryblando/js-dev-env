@@ -1,5 +1,3 @@
-require('babel-register')();
-
 import { Calculator } from "./calculator";
 
 describe("Calculator", function() {

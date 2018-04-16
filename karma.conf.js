@@ -3,6 +3,9 @@
 
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 
+const testGlob = 'src/**/*.spec.js';
+const srcGlob = 'src/**/*!(spec|test|stub).js';
+
 const appConfig = require('./config/index');
 
 module.exports = config => {
@@ -16,22 +19,22 @@ module.exports = config => {
     frameworks: ['mocha', 'chai'],
 
     plugins: [
-      require('karma-mocha'),
-      require('karma-chai'),
-      require('karma-chrome-launcher'),
-      require('karma-phantomjs-launcher'),
-      require('karma-babel-preprocessor'),
-      require('babel-preset-env'),
-      require('karma-coverage'),
-      require('karma-coveralls'),
-      require('karma-webpack'),
-      require('karma-sourcemap-loader'),
+      'karma-mocha',
+      'karma-chai',
+      'karma-chrome-launcher',
+      'karma-phantomjs-launcher',
+      'karma-babel-preprocessor',
+      'babel-preset-env',
+      'karma-coverage',
+      'karma-remap-coverage',
+      'karma-coveralls',
+      'karma-webpack',
+      'karma-sourcemap-loader',
+      'karma-mocha-reporter'
     ],
 
     // list of files / patterns to load in the browser
-    files: [
-      'src/**/*.spec.js',
-    ],
+    files: [testGlob, srcGlob],
 
     // list of files / patterns to exclude
     exclude: [
@@ -54,6 +57,14 @@ module.exports = config => {
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: appConfig.karma.reporters,
+
+    // autoWatch: first run will have the full output and the next runs just output the summary and errors in mocha style
+    // https://www.npmjs.com/package/karma-mocha-reporter
+    mochaReporter: {
+      output: 'autowatch'
+    },
+
+    // Coverage Report
     coverageReporter: appConfig.karma.coverageReporter,
 
     // web server port

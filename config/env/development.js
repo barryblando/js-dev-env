@@ -2,15 +2,18 @@
 
 const webpackConfig = require('../../config/webpack.config.test');
 
+const testGlob = 'src/**/*.spec.js';
+const srcGlob = 'src/**/*!(spec|test|stub).js';
+
 module.exports = {
   karma: {
     webpack: webpackConfig,
     webpackMiddleWare: { noInfo: true },
     preprocessors: {
-      'src/**/*.spec.js': ['babel', 'webpack'],
-      'src/**/*.js': ['babel', 'webpack'],
+      [testGlob]: ['webpack'],
+      [srcGlob]: ['webpack'],
     },
-    reporters: ['progress'],
+    reporters: ['mocha'],
     coverageReporter: false,
     browsers: ['PhantomJS'],
     customLaunchers: false,
