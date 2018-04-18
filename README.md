@@ -125,12 +125,24 @@
 | expect                      | Assertion library for use with Mocha                                                                      |
 | express                     | Serves development and production builds                                                                  |
 | extract-text-webpack-plugin | Extracts CSS into separate file for production build                                                      |
+| istanbul                    | Install if you want to try script coverage-istanbul otherwise use Karma Coverage Istanbul                 |
+| istanbul-instrumenter-loader| For subsequent code coverage reporting                                                                    |
 | file-loader                 | Adds file loading support to Webpack                                                                      |
 | jsdom                       | In-memory DOM for testing                                                                                 |
+| karma                       | A simple tool that allows you to execute JavaScript code in multiple real browsers.                       |
+| karma-chai                  | Chai for Karma but Chai still need to install                                                             |
+| karma-chrome-launcher       | Launcher for Google Chrome, Google Chrome Canary and Google Chromium.                                     |
+| karma-cli                   | Install this module if you want to be able to use karma in your command line.                             |
+| karma-cov-istanbul-reporter | A karma reporter that uses the latest istanbul 1.x APIs (with full sourcemap support) to report coverage. |
+| karma-mocha                 | Mocha for Karma but Mocha still need to install                                                           |
+| karma-mocha-reporter        | Karma reporter plugin with mocha style logging                                                            |
+| karma-sourcemap-loader      | Preprocessor that locates and loads existing source maps. Production Test.                                |
+| karma-webpack               | Use webpack to preprocess files in karma                                                                  |
 | mocha                       | JavaScript testing library                                                                                |
 | nock                        | An HTTP mocking and expectations library for Node.js                                                      |
 | npm-run-all                 | Display results of multiple commands on single command line                                               |
 | open                        | Open app in default browser                                                                               |
+| puppeteer                   | Node library which provides a HiLvl API to control headless Chrome or Chromium over the DevTools Protocol.|
 | rimraf                      | Delete files                                                                                              |
 | style-loader                | Add Style support to Webpack and Act as Fallback If Anything Happens to CSS Loader                        |
 | css-loader                  | Load CSS                                                                                                  |
@@ -144,7 +156,7 @@
 
 ## Testing Environment
 
-1. Karma - Test Runner
+1. Karma - TDD Test Runner
 
 ## Testing Frameworks
 

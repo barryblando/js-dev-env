@@ -1,9 +1,6 @@
 'use strict';
 
-const path = require('path');
 const webpackConfig = require('../../config/webpack.config.test');
-const testGlob = 'src/**/*.spec.js';
-const srcGlob = 'src/**/*!(spec|test|stub).js';
 
 module.exports = {
   karma: {
@@ -23,22 +20,12 @@ module.exports = {
     webpack: webpackConfig,
     webpackMiddleWare: { noInfo: true },
     preprocessors: {
-      [testGlob]: ['webpack', 'sourcemap', 'coverage'],
-      [srcGlob]: ['webpack', 'sourcemap', 'coverage']
+      'src/test-context.js': ['webpack', 'sourcemap']
     },
-    reporters: ['mocha', 'coverage', 'remap-coverage'],
-    coverageReporter: {
-      dir: path.join(__dirname, '../../coverage'),
-      reporters: [
-        { type: 'lcov', dir: 'coverage/', subdir: '.' },
-        { type: 'json', dir: 'coverage/', subdir: '.' },
-        { type: 'text' }
-      ]
-    },
-    remapCoverageReporter: {
-      'text-summary': null,
-      html: './coverage/html',
-      cobertura: './coverage/cobertura.xml'
+    reporters: ['mocha', 'coverage-istanbul'],
+    coverageIstanbulReporter: {
+      reports: [ 'text', 'lcov' ],
+      fixWebpackSourcePaths: true
     },
     autoWatch: false,
     singleRun: true

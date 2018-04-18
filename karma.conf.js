@@ -3,9 +3,6 @@
 
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 
-const testGlob = 'src/**/*.spec.js';
-const srcGlob = 'src/**/*!(spec|test|stub).js';
-
 const appConfig = require('./config/index');
 
 module.exports = config => {
@@ -22,19 +19,15 @@ module.exports = config => {
       'karma-mocha',
       'karma-chai',
       'karma-chrome-launcher',
-      'karma-phantomjs-launcher',
-      'karma-babel-preprocessor',
       'babel-preset-env',
-      'karma-coverage',
-      'karma-remap-coverage',
-      'karma-coveralls',
       'karma-webpack',
       'karma-sourcemap-loader',
-      'karma-mocha-reporter'
+      'karma-mocha-reporter',
+      'karma-coverage-istanbul-reporter'
     ],
 
     // list of files / patterns to load in the browser
-    files: [testGlob, srcGlob],
+    files: ['src/test-context.js'],
 
     // list of files / patterns to exclude
     exclude: [
@@ -45,13 +38,6 @@ module.exports = config => {
     preprocessors: appConfig.karma.preprocessors,
     webpack: appConfig.karma.webpack,
     webpackMiddleWare: appConfig.karma.webpackMiddleWare,
-
-    babelPreprocessor: {
-      options: {
-        presets: ['env'],
-        sourceMap: 'inline'
-      },
-    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -65,7 +51,7 @@ module.exports = config => {
     },
 
     // Coverage Report
-    coverageReporter: appConfig.karma.coverageReporter,
+    coverageIstanbulReporter: appConfig.karma.coverageIstanbulReporter,
 
     // web server port
     port: 3000,

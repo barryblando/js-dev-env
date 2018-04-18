@@ -2,12 +2,8 @@
   "presets": [
     ["env", {
       "targets": {
-        "browsers": ["last 2 versions", "safari >= 7"],
-        "esmodules": "true"
+        "browsers": ["last 2 versions", "safari >= 7"]
       }
     }]
-  ],
-  "plugins": [
-    "transform-es2015-modules-commonjs"
   ]
 }

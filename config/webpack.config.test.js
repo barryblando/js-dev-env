@@ -11,7 +11,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [ { loader: 'babel-loader' } ],
+        use: [ { loader: 'istanbul-instrumenter-loader', options: { esModules: true } } ],
       },
       {
         test: /\.scss$/,
