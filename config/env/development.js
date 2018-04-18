@@ -2,21 +2,28 @@
 
 const webpackConfig = require('../../config/webpack.config.test');
 
-const testGlob = 'src/**/*.spec.js';
-const srcGlob = 'src/**/*!(spec|test|stub).js';
-
 module.exports = {
   karma: {
     webpack: webpackConfig,
     webpackMiddleWare: { noInfo: true },
     preprocessors: {
-      [testGlob]: ['webpack'],
-      [srcGlob]: ['webpack'],
+      'src/test-context.js': ['webpack']
     },
     reporters: ['mocha'],
     coverageReporter: false,
-    browsers: ['PhantomJS'],
-    customLaunchers: false,
+    browsers: ['Chrome_no_sandbox'],
+    customLaunchers: {
+      Chrome_no_sandbox: {
+        base: 'Chrome',
+        flags: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--headless',
+          '--disable-gpu',
+          '--remote-debugging-port=9222',
+        ],
+      },
+    },
     autoWatch: true,
     singleRun: false
   }
