@@ -60,3 +60,4 @@ typings/
 coverage
 .coveralls.yml
 /src/api/db.json
+/config/raven.config.js
