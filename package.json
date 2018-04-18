@@ -15,7 +15,7 @@
     "coveralls": "cat coverage/lcov.info | coveralls && rimraf coverage",
     "share": "npm-run-all --parallel open:src localtunnel",
     "test": "karma start ",
-    "test-mocha": "mocha --reporter progress buildScripts/testSetup.js \"_tests_/src/*.spec.js\"",
+    "test-mocha": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.spec.js\"",
     "test:watch": "yarn test --auto-watch --no-single-run",
     "generate-mock-data": "babel-node buildScripts/generateMockData",
     "prestart-mockapi": "yarn run generate-mock-data",

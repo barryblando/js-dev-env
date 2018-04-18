@@ -1,5 +1,7 @@
 import { Calculator } from "./calculator";
 
+import { expect } from 'chai'; // Temporary for Appveyor Test
+
 describe("Calculator", function() {
 
   it("should add two numbers", () => {
