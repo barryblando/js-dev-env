@@ -17,6 +17,6 @@ test_script:
   - node --version
   - npm --version
   # run tests
-  - yarn test
+  - yarn test-mocha
 # Don't actually build.
 build: off
