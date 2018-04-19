@@ -181,3 +181,7 @@ This makes it a lot easier to test your code, so you don't have to do thousands 
 ## Error Tracker
 
 1. Sentry
+
+## Contributions & Enhancement
+
+- Contributions & Enhancements are open and don't forget to credit me. Thank you.
