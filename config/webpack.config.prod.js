@@ -9,7 +9,6 @@ const WebpackMd5Hash = require('webpack-md5-hash');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-
 module.exports = {
   mode: 'production',
   devtool: 'source-map',

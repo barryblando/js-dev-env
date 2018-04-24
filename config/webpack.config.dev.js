@@ -22,6 +22,14 @@ module.exports = {
     filename: 'bundle.js'
   },
   watch: true,
+  devServer: {
+    host: 'localhost',
+    port: 3000,
+    contentBase: path.resolve(__dirname, 'src'),
+    hot: true,
+    open: true,
+    openPage: '', // <== Add this
+  },
   module: {
     rules: [
       {
