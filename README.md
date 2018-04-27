@@ -123,7 +123,7 @@
 | eslint-watch                | Add watch functionality to ESLint                                                                         |
 | eventsource-polyfill        | Polyfill to support hot reloading in IE                                                                   |
 | expect                      | Assertion library for use with Mocha                                                                      |
-| express                     | Serves development and production builds                                                                  |
+| express                     | Serves as development and production build Server                                                               |
 | extract-text-webpack-plugin | Extracts CSS into separate file for production build                                                      |
 | istanbul                    | Install if you want to try script coverage-istanbul otherwise use Karma Coverage Istanbul                 |
 | istanbul-instrumenter-loader| For subsequent code coverage reporting                                                                    |
@@ -158,6 +158,14 @@
 
 - [Webpack - The Confusing Parts](https://medium.com/@rajaraodv/webpack-the-confusing-parts-58712f8fcad9)
 - [Webpack & Hot Module Replacement [HMR]](https://medium.com/@rajaraodv/webpack-hot-module-replacement-hmr-e756a726a07#.y667mx4lg)
+- [webpack-hot-middleware](https://github.com/webpack-contrib/webpack-hot-middleware)
+- [hot-module-replacement](https://webpack.js.org/guides/hot-module-replacement/)
+
+ ```js
+   module.hot.accept(); // Additionally you have to define that hot reloading is available and should be used.
+    // If you would remove the module.hot.accept(); line,
+    // the browser would perform a reload if something has changed in the code.
+ ```
 
 ## Testing Environment
 

@@ -40,3 +40,5 @@ users.getUsers().then(result => {
     };
   });
 });
+
+module.hot.accept();
